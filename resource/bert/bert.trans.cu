@@ -429,7 +429,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_batch_matmul_4_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ compute) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(125))) __attribute__((amdgpu_num_sgpr(54))) void fused_nn_batch_matmul_4_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ compute) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 5 + threadIdx.z * 24 * 5 >= 5 * 24 * 1) return;
     // if (blockIdx.x + blockIdx.y * 2 + blockIdx.z * 10 * 2 >= 2 * 10 * 12) return;
@@ -437,7 +437,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_batch_matmul_5_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ compute) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(125))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_batch_matmul_5_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ compute) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 16 + threadIdx.z * 16 * 16 >= 16 * 16 * 1) return;
     // if (blockIdx.x + blockIdx.y * 10 + blockIdx.z * 6 * 10 >= 10 * 6 * 12) return;
@@ -445,7 +445,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_softmax_1_kernel1_device_wrapper(float* __restrict__ T_softmax_exp, float* __restrict__ placeholder, float* __restrict__ T_softmax_maxelem) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(33))) void fused_nn_softmax_1_kernel1_device_wrapper(float* __restrict__ T_softmax_exp, float* __restrict__ placeholder, float* __restrict__ T_softmax_maxelem) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 256 + threadIdx.z * 1 * 256 >= 256 * 1 * 1) return;
     // if (blockIdx.x + blockIdx.y * 256 + blockIdx.z * 1 * 256 >= 256 * 1 * 1) return;
@@ -469,7 +469,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_subtract_add_sqrt_divide_multiply_add_1_kernel0_device_wrapper(float* __restrict__ T_add, float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ placeholder2, float* __restrict__ placeholder3, float* __restrict__ placeholder4) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(34))) void fused_subtract_add_sqrt_divide_multiply_add_1_kernel0_device_wrapper(float* __restrict__ T_add, float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ placeholder2, float* __restrict__ placeholder3, float* __restrict__ placeholder4) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 256 + threadIdx.z * 1 * 256 >= 256 * 1 * 1) return;
     // if (blockIdx.x + blockIdx.y * 256 + blockIdx.z * 1 * 256 >= 256 * 1 * 1) return;
@@ -477,7 +477,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_batch_matmul_3_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ compute) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_batch_matmul_3_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ compute) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 5 + threadIdx.z * 40 * 5 >= 5 * 40 * 1) return;
     // if (blockIdx.x + blockIdx.y * 32 + blockIdx.z * 4 * 32 >= 32 * 4 * 1) return;
@@ -565,7 +565,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_variance_1_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_multiply_red) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(31))) __attribute__((amdgpu_num_sgpr(30))) void fused_variance_1_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_multiply_red) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 32 + threadIdx.z * 32 * 32 >= 32 * 32 * 1) return;
     // if (blockIdx.x + blockIdx.y * 15 + blockIdx.z * 1 * 15 >= 15 * 1 * 1) return;
@@ -581,7 +581,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_reshape_cast_broadcast_to_like_where_kernel0_device_wrapper(float* __restrict__ T_where, signed char* __restrict__ placeholder, float* __restrict__ placeholder1) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(31))) void fused_reshape_cast_broadcast_to_like_where_kernel0_device_wrapper(float* __restrict__ T_where, signed char* __restrict__ placeholder, float* __restrict__ placeholder1) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 256 + threadIdx.z * 1 * 256 >= 256 * 1 * 1) return;
     // if (blockIdx.x + blockIdx.y * 256 + blockIdx.z * 1 * 256 >= 256 * 1 * 1) return;

@@ -2,6 +2,16 @@
 #include "reef/util/common.h"
 
 #include <glog/logging.h>
+#include <hip/hip_runtime.h>
+
+
+__global__ void kernelCpy(unsigned char *out, unsigned char *in, size_t length) {
+    int x = blockDim.x * blockIdx.x + threadIdx.x;
+    int stride = blockDim.x * gridDim.x;
+    for (; x < length; x += stride) {
+        out[x] = in[x];
+    }
+}
 
 namespace reef {
 namespace executor {
@@ -13,20 +23,27 @@ uint32_t GPUConfig::get_num_cus() {
 
 
 
+
 Status GPUConfig::get_kernel_address(const char* name, GPUModule_t mod, GPUFunctionPtr_t& ret) {
     hipFunction_t temp;
     GPU_RETURN_STATUS(hipModuleGetFunction(&temp, mod, name));
+    
     hipFunctionWGInfo_t wgInfo;
     GPU_RETURN_STATUS(hipFuncGetWGInfo(temp, &wgInfo));
+    
     hipDeviceptr_t temp_buf;
     GPU_RETURN_STATUS(hipMalloc(&temp_buf, 64));
+
     int buf[24];
     int size = 24;
 
-    GPU_RETURN_STATUS(hipMemcpyDtoD(temp_buf, (hipDeviceptr_t)wgInfo.baseAddress, size));
+    kernelCpy<<<1, 1024>>>((unsigned char *)temp_buf, (unsigned char *)wgInfo.baseAddress, size);
+    GPU_RETURN_STATUS(hipDeviceSynchronize());
+    // GPU_RETURN_STATUS(hipMemcpyDtoD(temp_buf, (hipDeviceptr_t)wgInfo.baseAddress, size));
     GPU_RETURN_STATUS(hipMemcpy(buf, temp_buf, size, hipMemcpyDeviceToHost));
-    GPU_RETURN_STATUS(hipFree(temp_buf));
 
+    GPU_RETURN_STATUS(hipFree(temp_buf));
+    
     ret = wgInfo.baseAddress + *(long long int*)(&buf[4]);
     return Status::Succ;  
 }
@@ -40,7 +57,6 @@ Status GPUConfig::get_kernel_resource(GPUFunction_t func, KernelResource& ret) {
     ret.stack_size = wg_info.privateMemSize_;
     return Status::Succ;
 }
-
 
 GPUConfig::KernelResource GPUConfig::max_resource(
     const KernelResource& kr1, const KernelResource& kr2) {
@@ -63,10 +79,12 @@ int GPUConfig::calculate_occupancy(const KernelResource& resource, dim3 block_di
     max_gpr_waves = std::min(max_gpr_waves, 40);
     
     int max_gpr_blocks = max_gpr_waves * 64 / block_size;
-    int max_shared_mem_blocks = 64 * 1024 / block_size;
+
+    int max_shared_mem_blocks = 64 * 1024 / block_size; // TODO SMEM!
 
     int max_thread_blocks = 2048 / block_size;
     
+    // min max_thread_blocks, max_shared_mem_blocks and max_gpr_blocks
     int occupancy = std::min(max_gpr_blocks, max_shared_mem_blocks);
     occupancy = std::min(occupancy, max_thread_blocks);
     

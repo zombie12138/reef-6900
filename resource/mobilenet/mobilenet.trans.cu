@@ -1775,7 +1775,7 @@ __device__ void fused_nn_conv2d_add_nn_relu_10_kernel0_device(float* __restrict_
 }
 
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_12_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_12_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 4 + threadIdx.z * 4 * 4 >= 4 * 4 * 16) return;
     // if (blockIdx.x + blockIdx.y * 7 + blockIdx.z * 14 * 7 >= 7 * 14 * 2) return;
@@ -1783,7 +1783,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_7_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_7_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 14 + threadIdx.z * 14 * 14 >= 14 * 14 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 256) return;
@@ -1791,7 +1791,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_6_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_6_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 2 * 7 >= 7 * 2 * 32) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 7 * 1 >= 1 * 7 * 16) return;
@@ -1799,7 +1799,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(37))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_14_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_14_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 4 + threadIdx.z * 2 * 4 >= 4 * 2 * 32) return;
     // if (blockIdx.x + blockIdx.y * 7 + blockIdx.z * 14 * 7 >= 7 * 14 * 2) return;
@@ -1807,7 +1807,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(37))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_18_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(127))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_18_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 16 + threadIdx.z * 1 * 16 >= 16 * 1 * 32) return;
     // if (blockIdx.x + blockIdx.y * 7 + blockIdx.z * 16 * 7 >= 7 * 16 * 1) return;
@@ -1815,7 +1815,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_17_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(35))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_17_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 28 + threadIdx.z * 14 * 28 >= 28 * 14 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 8 * 1 >= 1 * 8 * 32) return;
@@ -1823,7 +1823,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_11_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_11_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 28 + threadIdx.z * 28 * 28 >= 28 * 28 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 128) return;
@@ -1831,7 +1831,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_16_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(81))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_16_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 4 + threadIdx.z * 4 * 4 >= 4 * 4 * 16) return;
     // if (blockIdx.x + blockIdx.y * 7 + blockIdx.z * 28 * 7 >= 7 * 28 * 1) return;
@@ -1839,7 +1839,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_2_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(35))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_2_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 7 * 7 >= 7 * 7 * 16) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 64) return;
@@ -1855,7 +1855,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_13_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(39))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_13_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 28 + threadIdx.z * 28 * 28 >= 28 * 28 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 128) return;
@@ -1863,7 +1863,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(33))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_8_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_8_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 14 + threadIdx.z * 4 * 14 >= 14 * 4 * 16) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 7 * 1 >= 1 * 7 * 8) return;
@@ -1879,7 +1879,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_9_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(31))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_9_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 14 * 7 >= 7 * 14 * 4) return;
     // if (blockIdx.x + blockIdx.y * 2 + blockIdx.z * 2 * 2 >= 2 * 2 * 64) return;
@@ -1887,7 +1887,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_dense_add_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_add, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(63))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_dense_add_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_add, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 64 + threadIdx.z * 1 * 64 >= 64 * 1 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1000 + blockIdx.z * 1 * 1000 >= 1000 * 1 * 1) return;
@@ -1895,7 +1895,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_15_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_15_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 56 + threadIdx.z * 14 * 56 >= 56 * 14 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 4 * 1 >= 1 * 4 * 64) return;
@@ -1903,7 +1903,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(35))) __attribute__((amdgpu_num_sgpr(54))) void fused_nn_softmax_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ T_softmax_norm) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(47))) __attribute__((amdgpu_num_sgpr(54))) void fused_nn_softmax_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ T_softmax_norm) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 64 + threadIdx.z * 1 * 64 >= 64 * 1 * 1) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 1) return;
@@ -1911,7 +1911,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(35))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_3_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_3_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 7 * 7 >= 7 * 7 * 8) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 64) return;
@@ -1919,7 +1919,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(29))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_4_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(47))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_4_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 7 * 7 >= 7 * 7 * 8) return;
     // if (blockIdx.x + blockIdx.y * 2 + blockIdx.z * 2 * 2 >= 2 * 2 * 32) return;
@@ -1927,7 +1927,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(29))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(35))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 7 * 7 >= 7 * 7 * 16) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 64) return;
@@ -1935,7 +1935,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_1_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(27))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_1_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 7 * 7 >= 7 * 7 * 4) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 256) return;
@@ -1943,7 +1943,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_5_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(31))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_5_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 7 + threadIdx.z * 14 * 7 >= 7 * 14 * 2) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 1 * 1 >= 1 * 1 * 256) return;
@@ -1951,7 +1951,7 @@ extern "C" __global__  __attribute__((amdgpu_num_vgpr(25))) __attribute__((amdgp
     asm volatile(";; end_flag"); // jump back to the caller
 }
 
-extern "C" __global__  __attribute__((amdgpu_num_vgpr(33))) __attribute__((amdgpu_num_sgpr(30))) void fused_nn_conv2d_add_nn_relu_10_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
+extern "C" __global__  __attribute__((amdgpu_num_vgpr(61))) __attribute__((amdgpu_num_sgpr(34))) void fused_nn_conv2d_add_nn_relu_10_kernel0_device_wrapper(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_relu, float* __restrict__ placeholder2) {
     // Force the compiler to use all the index
     if (threadIdx.x + threadIdx.y * 14 + threadIdx.z * 4 * 14 >= 14 * 4 * 16) return;
     // if (blockIdx.x + blockIdx.y * 1 + blockIdx.z * 7 * 1 >= 1 * 7 * 8) return;

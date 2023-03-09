@@ -52,6 +52,7 @@ TEST(rpc, resnet18_param) {
     std::vector<float> ans = {0.0003392257, 0.0014304413, 0.0004299286, 0.0010349639, 0.0020997059,
                         0.0016049921, 0.0010267848, 0.00042607592, 0.0018747754, 0.0024558322};
     for (size_t i = 0; i < ans.size(); i++)
+        // std::cout << ans[i] << output[i] << std::endl;
         ASSERT_FLOAT_EQ(ans[i], output[i]);
     server.shutdown();  
 }

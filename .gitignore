@@ -1,0 +1,8 @@
+build/
+notes/
+__pycache__/
+log/
+*.pb.h
+*.pb.cc
+*.co
+*.s

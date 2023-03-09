@@ -12,7 +12,7 @@ import json
 def generate_device_func_header():
     template = """
     .text
-    .amdgcn_target "amdgcn-amd-amdhsa--gfx906"
+    .amdgcn_target "amdgcn-amd-amdhsa--gfx1030"
     .p2align    2                               ; -- Begin function get_3d_idx
     .type    get_3d_idx,@function
 get_3d_idx:                   ; @get_3d_idx
@@ -207,13 +207,17 @@ def generate_caller_asm(need_cal_idx, last_vgpr, last_sgpr, lds_size, stack_size
     s_mov_b32 s4, 0
 {caller_name}1_3:
     v_mov_b32_e32 v1, s4
-    v_cmp_lt_u32_e32 vcc, s6, v1
+    ;v_cmp_lt_u32_e32 vcc, s6, v1
+    ;TODO
+    v_cmp_lt_u32_e32 vcc_lo, s6, v1
     v_mov_b32_e32 v1, s2
-    v_cmp_ge_u32_e64 s[0:1], s6, v1
+    ;TODO
+    v_cmp_ge_u32_e64 s[0:0], s6, v1
     s_waitcnt lgkmcnt(0)
     v_mov_b32_e32 v1, s12
     s_or_b64 s[0:1], vcc, s[0:1]
-    v_cmp_ge_i32_e32 vcc, s3, v1
+    ;TODO
+    v_cmp_ge_i32_e32 vcc_lo, s3, v1
     s_or_b64 s[0:1], s[0:1], vcc
     s_and_b64 vcc, exec, s[0:1]
 ;;# if cu_id < cu_lower || cu_id >= cu_upper || layer_idx >= layers return;
