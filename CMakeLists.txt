@@ -76,6 +76,8 @@ AUX_SOURCE_DIRECTORY("${PROJECT_SOURCE_DIR}/src/reef/util" util)
 
 AUX_SOURCE_DIRECTORY("${PROJECT_SOURCE_DIR}/src/reef/test" test)
 
+AUX_SOURCE_DIRECTORY("${PROJECT_SOURCE_DIR}/src/reef/profiler" profiler)
+
 add_library(reef_util
   ${util}
 )
@@ -90,7 +92,11 @@ add_library(reef_client_lib
   ${client}
 )
 
-add_executable(unit_test 
+add_library(reef_profiler_lib
+  ${profiler}
+)
+
+add_executable(unit_test
   ${test}
 )
 
@@ -114,6 +120,7 @@ function (add_executable_app app_name app_path)
     target_link_libraries(${app_name}
       reef_util
       reef_server_lib
+      reef_profiler_lib
       reef_client_lib
       reef_grpc_proto
       glog::glog
@@ -128,4 +135,6 @@ endfunction()
 add_executable_app(reef_client "${PROJECT_SOURCE_DIR}/src/example/rpc_client.cpp")
 add_executable_app(reef_client_cont "${PROJECT_SOURCE_DIR}/src/example/rpc_client_cont.cpp")
 add_executable_app(reef_server "${PROJECT_SOURCE_DIR}/src/example/rpc_server.cpp")
+
 add_executable_app(rpc_client_for_test "${PROJECT_SOURCE_DIR}/src/example/rpc_client_for_test.cpp")
+add_executable_app(generate_model_profile "${PROJECT_SOURCE_DIR}/src/reef/profiler/generate_model_profile.cpp")

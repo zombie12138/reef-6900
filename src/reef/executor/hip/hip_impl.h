@@ -22,6 +22,18 @@
 #define GPUResetCU hipResetWavefronts
 #define GPUMemset hipMemset
 
+// todo load gpu config file
+#define AMD6900
+#ifdef AMD6900
+#define NUM_CUS 80
+#define WAVE_FRONT_SIZE 32
+// TODO SIMD32 ? SIMD16 should double?
+#define VGPR_SIZE 131072 // 16 * 1024 *4 *2?(RDNA/GCN)
+#define SGPR_SIZE 1600 // 800 https://gpuopen.com/learn/optimizing-gpu-occupancy-resource-usage-large-thread-groups/
+#define SIMD_PER_CU 2
+#define MAX_THREAD_SCOUT 1280
+#endif  // AMD6900
+
 #define GPU_RETURN_STATUS(cmd) \
 {\
     hipError_t error = cmd;\

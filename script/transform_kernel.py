@@ -74,16 +74,8 @@ def find_all_vgpr_usage(lines):
     funcs = {}
     current_func = ""
     vgprs_layers = [
-        256,
-        128,
-        84,
-        64,
-        48,
-        40,
-        36,
-        32,
-        28,
-        28,
+        512, 256, 168, 128, 96,
+        80, 72, 64, 56, 56,
         0
     ]
     for line in lines:
@@ -224,7 +216,7 @@ def add_global_definition(lines):
             insert_line = i
             break
     new_lines.extend(lines[:insert_line])
-    new_lines.extend("""#define CU_NUM 60
+    new_lines.extend("""#define CU_NUM 80
 
 __device__ __forceinline__ bool is_first_thread() {
   return threadIdx.x == 0;
@@ -253,16 +245,8 @@ def generate_vgpr_num(occupancy_hint):
     occupancy = int(occupancy_hint.split(",")[-1].split(")")[0])
     vgprs_layers = [
         0,
-        256,
-        128,
-        84,
-        64,
-        48,
-        40,
-        36,
-        32,
-        28,
-        28
+        512, 256, 168, 128, 96,
+        80, 72, 64, 56, 56
     ]
     return vgprs_layers[occupancy] - 1
 
@@ -272,16 +256,8 @@ def generate_sgpr_num(occupancy_hint):
     occupancy = int(occupancy_hint.split(",")[-1].split(")")[0])
     sgprs_layers = [
         0,
-        102,
-        102,
-        102,
-        102,
-        102,
-        102,
-        102,
-        102,
-        88,
-        80
+        204, 204, 204, 204, 204,
+        204, 204, 204, 176, 160
     ]
     return sgprs_layers[occupancy]
 
@@ -435,7 +411,7 @@ extern "C" __global__ __attribute__((amdgpu_num_vgpr(%d))) void %s(
       task_num = task_num_r;
       task_offset = task_offset_r;
       args = param_r;
-      cu_upper = 60;
+      cu_upper = 80;
       cu_lower = cu_partition;
     }
     dim3 task_dim;
@@ -636,7 +612,7 @@ extern "C" __global__ void %s(
       task_num = task_num_r;
       task_offset = task_offset_r;
       args = param_r;
-      cu_upper = 60;
+      cu_upper = 80;
       cu_lower = cu_partition;
     }
     %s_device_wrapper(task_dim, thread_dim, task_slots, task_num, task_offset, cu_lower, cu_upper, args);
@@ -698,7 +674,7 @@ extern "C" __global__ void merge_framework_##idx(\\
     "  s_load_dwordx2 s[14:15], s[4:5], 0x20\\n"\\
     "  s_mul_hi_u32 s11, s6, 0x88888889\\n"\\
     "  s_lshr_b32 s11, s11, 5\\n"\\
-    "  s_mul_i32 s11, s11, 60\\n"\\
+    "  s_mul_i32 s11, s11, 80\\n"\\
     "  s_sub_i32 s11, s6, s11\\n"\\
     "  s_waitcnt lgkmcnt(0)\\n"\\
     "  s_cmp_ge_u32 s11, s10\\n"\\

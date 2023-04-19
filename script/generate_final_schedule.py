@@ -18,11 +18,15 @@ import sys
 def generate_final_schedule(source_code_lines, schedule_raw, graph):
     def split_function_declaration(line):
         parts = line.split("(")
-        parameters_str = parts[1].split(")")[0]
+        parameters_str = parts[2].split(")")[0]
+        
         left_parts = parts[0].split(" ")
-        name = left_parts[-1]
         return_type = left_parts[-2]
         header = " ".join(left_parts[:-2])
+
+        middle_parts = parts[1].split(" ")
+        name = middle_parts[-1]
+
         parameter_str_list = parameters_str.split(", ")
         parameters = []
         for param_str in parameter_str_list:
@@ -36,8 +40,8 @@ def generate_final_schedule(source_code_lines, schedule_raw, graph):
     storage_id = graph["attrs"]["storage_id"][1]
     ## FIXME: a hack here
     ## to avoid buffer reuse, we replace storage_id to itself.
-    for i in range(len(storage_id)):
-        storage_id[i] = i
+    # for i in range(len(storage_id)):
+    #     storage_id[i] = i
         
     storage = []
     for i in range(max(storage_id) + 1):

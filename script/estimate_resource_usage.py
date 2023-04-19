@@ -18,7 +18,7 @@ for i in range(1, len(sys.argv)):
     model_profile = json.loads(open(model_dir + "/" + model_name + ".profile.json", "r").read())
     model_schedule = json.loads(open(model_dir + "/" + model_name + ".json", "r").read())
 
-    num_cu = 60
+    num_cu = 80
 
     total = 0
     used = 0

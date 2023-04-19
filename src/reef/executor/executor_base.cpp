@@ -74,7 +74,6 @@ Status ExecutorBase::init_executor_base(
         raw_args.push_back(kernel_arg);
     }
 
-    LOG(INFO) << "create base model stream";
     GPU_RETURN_STATUS(hipStreamCreateWithWindowSize(&s, 16));
     return Status::Succ;
 }
@@ -159,6 +158,12 @@ Status ExecutorBase::get_data(int idx, void* out, size_t len) {
         out, (GPUDevicePtr_t)this->storage[idx], storage_size
     ));
     return Status::Succ;
+}
+
+Status ExecutorBase::get_kernel_name(int idx, std::string& out) {
+    if (idx >= this->model->kernels.size()) RETURN_STATUS(Status::OutOfRange);  // TODO this->model->kernels vs kernels
+     out = this->model->kernels[idx].name;
+     return Status::Succ;
 }
 
 Status ExecutorBase::find_storage_idx(const std::string& name, size_t& idx) {

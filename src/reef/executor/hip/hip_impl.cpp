@@ -4,7 +4,6 @@
 #include <glog/logging.h>
 #include <hip/hip_runtime.h>
 
-
 __global__ void kernelCpy(unsigned char *out, unsigned char *in, size_t length) {
     int x = blockDim.x * blockIdx.x + threadIdx.x;
     int stride = blockDim.x * gridDim.x;
@@ -18,7 +17,7 @@ namespace executor {
 
 uint32_t GPUConfig::get_num_cus() {
     // TODO: dynamic load CU nums
-    return 60;
+    return NUM_CUS;
 }
 
 
@@ -70,19 +69,19 @@ GPUConfig::KernelResource GPUConfig::max_resource(
 
 int GPUConfig::calculate_occupancy(const KernelResource& resource, dim3 block_dim) {
     int vgprs = align_up(resource.vgprs, 4);
-    int sgprs = align_up(resource.sgprs, 8);
+    int sgprs = align_up(resource.sgprs, 8);    // 16? TODO
     int shared_mem = align_up(resource.shared_memory, 256);
-    int block_size = (int)align_up<unsigned int>(block_dim.x * block_dim.y * block_dim.z, 64);
+    int block_size = (int)align_up<unsigned int>(block_dim.x * block_dim.y * block_dim.z, WAVE_FRONT_SIZE);
 
-    int max_gpr_waves = (16 * 1024 / (vgprs * 64)) * 4;
-    max_gpr_waves = std::min(max_gpr_waves, (800 / sgprs) * 4);
+    int max_gpr_waves = (VGPR_SIZE / (vgprs * WAVE_FRONT_SIZE)) * SIMD_PER_CU; // vgpr
+    max_gpr_waves = std::min(max_gpr_waves, (SGPR_SIZE / sgprs) * SIMD_PER_CU); // 800 per SIMD
     max_gpr_waves = std::min(max_gpr_waves, 40);
     
-    int max_gpr_blocks = max_gpr_waves * 64 / block_size;
+    int max_gpr_blocks = max_gpr_waves * WAVE_FRONT_SIZE / block_size;
 
-    int max_shared_mem_blocks = 64 * 1024 / block_size; // TODO SMEM!
+    int max_shared_mem_blocks = 64 * 1024 / shared_mem;//block_size; // TODO SMEM!
 
-    int max_thread_blocks = 2048 / block_size;
+    int max_thread_blocks = MAX_THREAD_SCOUT / block_size;
     
     // min max_thread_blocks, max_shared_mem_blocks and max_gpr_blocks
     int occupancy = std::min(max_gpr_blocks, max_shared_mem_blocks);

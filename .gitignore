@@ -1,6 +1,7 @@
 build/
 notes/
 __pycache__/
+.pkl_memoize_py3/
 log/
 *.pb.h
 *.pb.cc

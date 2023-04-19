@@ -38,6 +38,8 @@ public:
 
     Status get_data(int idx, void* out, size_t len);
 
+    Status get_kernel_name(int idx, std::string& out);
+
     Status execute(GPUStream_t stream = GPUStreamDefault); 
 
     Status execute_to(int idx, GPUStream_t stream = GPUStreamDefault);

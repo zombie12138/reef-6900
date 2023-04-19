@@ -94,17 +94,8 @@ get_3d_idx:                   ; @get_3d_idx
 
 def need_cal_threadidx(last_vgpr):
     vgprs_layers = [
-        256,
-        128,
-        84,
-        64,
-        48,
-        40,
-        36,
-        32,
-        28,
-        28,
-        0
+        512, 256, 168, 128, 96,
+        80, 72, 64, 56, 56
     ]
     last_vgpr += 1
     layer = 0
@@ -189,7 +180,7 @@ def generate_caller_asm(need_cal_idx, last_vgpr, last_sgpr, lds_size, stack_size
     s_load_dword s2, s[4:5], 0x40
     s_mul_hi_u32 s0, s6, 0x88888889
     s_lshr_b32 s3, s0, 5
-    s_mul_i32 s0, s3, 60
+    s_mul_i32 s0, s3, 80
     s_sub_i32 s6, s6, s0
     s_waitcnt lgkmcnt(0)
     s_cmp_lt_u32 s6, s2
@@ -198,7 +189,7 @@ def generate_caller_asm(need_cal_idx, last_vgpr, last_sgpr, lds_size, stack_size
     s_load_dwordx4 s[12:15], s[4:5], 0x28
     s_load_dwordx2 s[18:19], s[4:5], 0x38
     s_mov_b32 s4, s2
-    s_mov_b32 s2, 60
+    s_mov_b32 s2, 80
     s_branch {caller_name}1_3
 ;;# load left parts
 {caller_name}1_2:

@@ -174,15 +174,18 @@ Status TransExecutor::launch_kernel(int kernel_offset, GPUStream_t stream) {
 
 GPUFunction_t TransExecutor::get_proxy_kernel(const GPUConfig::KernelResource& kr) {
     // FIXME: move to GPU interface
+    #ifdef AMD6900
     static int sgpr_bound[] = {    
-        102, 102, 102, 102, 102,
-        102, 102, 102, 88, 80
+        204, 204, 204, 204, 204,
+        204, 204, 204, 176, 160
     };
     
     static int vgpr_bound[] = {
-        256, 128, 84, 64, 48,
-        40, 36, 32, 28, 28
+        512, 256, 168, 128, 96,
+        80, 72, 64, 56, 56
     };
+    #endif  // AMD6900
+    
     int sgpr_idx = 0, vgpr_idx = 0;
     int occupancy = 10;
     for (int i = 1; i < 10; i++) {

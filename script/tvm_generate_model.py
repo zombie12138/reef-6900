@@ -4,7 +4,7 @@ from tvm import relay
 from tvm.relay import testing
 import tvm
 from tvm import te
-from tvm.contrib import graph_runtime
+import tvm.contrib.graph_executor as runtime
 import sys
 import json
 
@@ -45,7 +45,7 @@ with tvm.transform.PassContext(opt_level=opt_level):
     lib = relay.build(mod, target, params=params)
 
 ctx = tvm.rocm()
-module = graph_runtime.GraphModule(lib["default"](ctx))
+module = runtime.GraphModule(lib["default"](ctx))
 
 data = np.ones(data_shape).astype("float32")
 data = data * 10
@@ -56,7 +56,7 @@ module.run()
 source_file.write(lib.get_lib().imported_modules[0].get_source("hip"))
 source_file.close()
 
-graph_json_file.write(lib.get_json())
+graph_json_file.write(lib.get_graph_json())
 graph_json_file.close()
 
 raw_schedule_file.write(module.module["get_schedule_json"]())
@@ -75,7 +75,7 @@ def dump_params(params, f):
         f.write(array.array('Q',[len(param)]).tobytes())
         f.write(param.tobytes())
 
-dump_params(params, param_file)    
+dump_params(lib.params, param_file)    
 param_file.close()
 
 out = module.get_output(0, tvm.nd.empty(out_shape)).asnumpy()
